@@ -52,7 +52,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:latest    
+      image: ubuntu:latest.    
     steps:
       - name: Get build artifacts
         uses: actions/download-artifact@v7
