@@ -23,7 +23,8 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
-    # outputs:
+    outputs:
+      myvar:
     #   script-file: ${{ steps.publish.outputs.script-file }}
     steps:
       - name: Get code
@@ -33,6 +34,8 @@ jobs:
       #   with:
       #     path: ~/.npm
       #     key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - run: |
+          myvar="LOLO"
       - name: Install dependencies
         run: npm ci
       - name: Build website
@@ -48,10 +51,15 @@ jobs:
           # path: |
           #   dist
           #   package.json
+      - run: |
+          echo $myvar          
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - run: | 
+          echo ${{ needs.build.outputs.myvar }}"         
+
       - name: Get build artifacts
         uses: actions/download-artifact@v7
         with:
