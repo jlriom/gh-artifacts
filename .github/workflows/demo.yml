@@ -64,6 +64,9 @@ jobs:
         run: | 
           echo ${{ github.workspace }}
           echo $GITHUB_WORKSPACE
+      - name: env 3
+        run: | 
+          echo printenv
           
       - name: Output contents
         run: ls
