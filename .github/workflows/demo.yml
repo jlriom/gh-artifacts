@@ -59,7 +59,7 @@ jobs:
       - name: pwd
         run: pwd
       - name: env 1
-        run: echo "${{ toJson(github) }}""
+        run: echo "${{ toJson(github) }}"
       - name: env 2
         run: | 
           echo ${{ github.workspace }}
