@@ -59,10 +59,13 @@ jobs:
       - name: pwd
         run: pwd
       - name: env 1
-        run: echo "${{env}}"
+        run: echo ${{ github }}
       - name: env 2
-        run: echo "${{toJson(env)}}"
-
+        run: | 
+          echo "${{toJson(env)}}"
+          echo ${{ github.workspace }}
+          echo $GITHUB_WORKSPACE
+          
       - name: Output contents
         run: ls
       # - name: Output filename
