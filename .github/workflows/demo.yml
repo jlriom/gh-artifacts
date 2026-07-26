@@ -56,6 +56,13 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           name: dist-files
+      - name: pwd
+        run: pwd
+      - name: env 1
+        run: echo ${{env}}
+      - name: env 2
+        run: echo ${{toJson(env)}}
+
       - name: Output contents
         run: ls
       # - name: Output filename
