@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
+          whoami
+      - run: |
           ls -l -a 
       - run: |
           ls -l -a .
