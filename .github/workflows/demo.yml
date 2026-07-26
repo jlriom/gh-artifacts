@@ -35,7 +35,7 @@ jobs:
       #     path: ~/.npm
       #     key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - run: |
-          myvar="LOLO"
+          myvar="LOLO" >> $GITHUB_OUTPUT
         id: publish2          
       - name: Install dependencies
         run: npm ci
