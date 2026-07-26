@@ -7,6 +7,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          ls -l -a ~
       - name: Get code
         uses: actions/checkout@v7
       # - name: Cache dependencies
