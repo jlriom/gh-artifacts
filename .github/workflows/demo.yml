@@ -53,7 +53,7 @@ jobs:
           #   dist
           #   package.json
       - run: |
-          echo $myvar          
+          echo "${{ steps.publish2.outputs.myvar }}"            
   deploy:
     needs: build
     runs-on: ubuntu-latest
