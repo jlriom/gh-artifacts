@@ -51,8 +51,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:latest   
     steps:
       - name: Get build artifacts
         uses: actions/download-artifact@v7
@@ -61,10 +59,9 @@ jobs:
       - name: pwd
         run: pwd
       - name: env 1
-        run: echo ${{ github }}
+        run: echo ${{ toJson(github) }}
       - name: env 2
         run: | 
-          echo "${{toJson(env)}}"
           echo ${{ github.workspace }}
           echo $GITHUB_WORKSPACE
           
