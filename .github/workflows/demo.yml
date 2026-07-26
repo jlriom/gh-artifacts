@@ -18,11 +18,11 @@ jobs:
           ls -l -a ~
       - name: Get code
         uses: actions/checkout@v7
-      # - name: Cache dependencies
-      #   uses: actions/cache@v6
-      #   with:
-      #     path: ~/.npm
-      #     key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Cache dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
       - name: Lint code
@@ -34,15 +34,15 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       myvar: ${{ steps.publish2.outputs.myvar }}
-    #   script-file: ${{ steps.publish.outputs.script-file }}
+      script-file: ${{ steps.publish.outputs.script-file }}
     steps:
       - name: Get code
         uses: actions/checkout@v7
-      # - name: Cache dependencies
-      #   uses: actions/cache@v6
-      #   with:
-      #     path: ~/.npm
-      #     key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Cache dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - run: |    
           echo myvar="LOLO"  >> $GITHUB_OUTPUT
         id: publish2          
@@ -50,9 +50,9 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
-      # - name: Publish JS filename
-      #   id: publish
-      #   run: find dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
+      - name: Publish JS filename
+        id: publish
+        run: find dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
@@ -88,7 +88,7 @@ jobs:
           
       - name: Output contents
         run: ls
-      # - name: Output filename
-      #   run: echo "${{ needs.build.outputs.script-file }}"
+      - name: Output filename
+        run: echo "${{ needs.build.outputs.script-file }}"
       - name: Deploy
         run: echo "Deploying..."
