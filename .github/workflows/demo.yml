@@ -59,9 +59,9 @@ jobs:
       - name: pwd
         run: pwd
       - name: env 1
-        run: echo ${{env}}
+        run: echo "${{env}}"
       - name: env 2
-        run: echo ${{toJson(env)}}
+        run: echo "${{toJson(env)}}"
 
       - name: Output contents
         run: ls
